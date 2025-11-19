@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../config/constants/environment.dart' show Environment;
+
 class HomeScreen extends StatelessWidget {
   static const String routeName = 'home-screen';
 
@@ -7,6 +9,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Center(child: Text('Home')));
+    return Scaffold(body: Center(child: Text(Environment.tmdbApiToken)));
   }
 }
