@@ -1,0 +1,13 @@
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "always",
+        "source.organizeImports": "always"
+    },
+    "editor.fontLigatures": true,
+    "command-runner.commands": {
+        "pub get": "flutter pub get",
+        "build_runner": "flutter pub run build_runner build",
+        "build_runner delete conflictings": "flutter pub run build_runner build --delete-conflicting-outputs",
+        "flutter_gen": "flutter pub run flutter_gen:flutter_gen_command"
+    }
+}
