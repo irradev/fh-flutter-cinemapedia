@@ -6,19 +6,20 @@ import 'dart:convert';
 
 import 'tmdb_movie.dart';
 
-TmdbResponse tmdbResponseFromJson(String str) =>
-    TmdbResponse.fromJson(json.decode(str));
+TmdbMoviesResponse tmdbResponseFromJson(String str) =>
+    TmdbMoviesResponse.fromJson(json.decode(str));
 
-String tmdbResponseToJson(TmdbResponse data) => json.encode(data.toJson());
+String tmdbResponseToJson(TmdbMoviesResponse data) =>
+    json.encode(data.toJson());
 
-class TmdbResponse {
+class TmdbMoviesResponse {
   final Dates? dates;
   final int page;
   final List<TmdbMovie> results;
   final int totalPages;
   final int totalResults;
 
-  TmdbResponse({
+  TmdbMoviesResponse({
     required this.dates,
     required this.page,
     required this.results,
@@ -26,15 +27,16 @@ class TmdbResponse {
     required this.totalResults,
   });
 
-  factory TmdbResponse.fromJson(Map<String, dynamic> json) => TmdbResponse(
-    dates: json["dates"] == null ? null : Dates.fromJson(json["dates"]),
-    page: json["page"],
-    results: List<TmdbMovie>.from(
-      json["results"].map((x) => TmdbMovie.fromJson(x)),
-    ),
-    totalPages: json["total_pages"],
-    totalResults: json["total_results"],
-  );
+  factory TmdbMoviesResponse.fromJson(Map<String, dynamic> json) =>
+      TmdbMoviesResponse(
+        dates: json["dates"] == null ? null : Dates.fromJson(json["dates"]),
+        page: json["page"],
+        results: List<TmdbMovie>.from(
+          json["results"].map((x) => TmdbMovie.fromJson(x)),
+        ),
+        totalPages: json["total_pages"],
+        totalResults: json["total_results"],
+      );
 
   Map<String, dynamic> toJson() => {
     "dates": dates?.toJson(),
