@@ -129,7 +129,7 @@ class _Slide extends StatelessWidget {
                       //   MovieScreen.routeName,
                       //   pathParameters: {'id': movie.id.toString()},
                       // ),
-                      onTap: () => context.go('/movie/${movie.id}'),
+                      onTap: () => context.go('/home/movie/${movie.id}'),
                       child: FadeIn(child: child),
                     );
                   }

@@ -18,13 +18,13 @@ final mainTabsRouter = StatefulShellRoute.indexedStack(
       navigatorKey: mainTabsNavigatorKey,
       routes: [
         GoRoute(
-          path: '/',
+          path: '/home',
           // Vista principal del TabHome:
           builder: (context, state) => const HomeView(),
           // Rutas hijas del TabHome:
           routes: [
             GoRoute(
-              path: 'movie/:id',
+              path: '/movie/:id',
               builder: (context, state) {
                 final movieId = state.pathParameters['id'] ?? 'no-id';
                 return MovieScreen(movieId: movieId);

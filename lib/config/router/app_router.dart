@@ -6,6 +6,7 @@ final appRouter = GoRouter(
   initialLocation: '/',
   routes: [
     mainTabsRouter,
+    GoRoute(path: '/', redirect: (_, __) => '/home'),
     // GoRoute(
     //   path: '/',
     //   name: HomeScreen.routeName,

@@ -47,7 +47,7 @@ class CustomAppbar extends ConsumerWidget {
                   );
 
                   if (movie != null && context.mounted) {
-                    context.go('/movie/${movie.id}');
+                    context.go('/home/movie/${movie.id}');
                   }
                 },
                 icon: const Icon(Icons.search),
