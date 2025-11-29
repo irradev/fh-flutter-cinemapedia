@@ -8,6 +8,8 @@ import 'config/router/app_router.dart';
 import 'config/theme/app_theme.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await dotenv.load(fileName: ".env");
 
   if (kIsWeb) usePathUrlStrategy();
