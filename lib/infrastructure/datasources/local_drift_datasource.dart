@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart' as drift;
 
-import '../../config/database/drift/database.dart';
+import '../../config/database/drift/drift_database.dart';
 import '../../domain/datasources/local_storage_datasource.dart';
 import '../../domain/entities/movie.dart';
 
