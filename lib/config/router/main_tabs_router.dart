@@ -51,6 +51,15 @@ final mainTabsRouter = StatefulShellRoute.indexedStack(
         GoRoute(
           path: '/favorites',
           builder: (context, state) => const FavoritesView(),
+          routes: [
+            GoRoute(
+              path: '/movie/:id',
+              builder: (context, state) {
+                final movieId = state.pathParameters['id'] ?? 'no-id';
+                return MovieScreen(movieId: movieId);
+              },
+            ),
+          ],
         ),
       ],
     ),

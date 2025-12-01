@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../providers/storage/favorite_movies_provider.dart';
+import '../../widgets/movies/movies_masonry.dart';
 
 class FavoritesView extends ConsumerStatefulWidget {
   const FavoritesView({super.key});
@@ -21,17 +22,29 @@ class _FavoritesViewState extends ConsumerState<FavoritesView> {
   Widget build(BuildContext context) {
     final favoriteMovies = ref.watch(favoriteMoviesProvider).values.toList();
 
+    final colorPrimary = Theme.of(context).colorScheme.primary;
+
     if (favoriteMovies.isEmpty) {
-      return const Center(child: Text('No hay favoritos'));
+      return Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.favorite_border, size: 100, color: colorPrimary),
+              const Text(
+                'Aún no tienes películas favoritas',
+                style: TextStyle(color: Colors.grey),
+              ),
+            ],
+          ),
+        ),
+      );
     }
 
     return Scaffold(
-      body: ListView.builder(
-        itemCount: favoriteMovies.length,
-        itemBuilder: (context, index) {
-          final movie = favoriteMovies[index];
-          return ListTile(title: Text(movie.title));
-        },
+      body: MoviesMasonry(
+        movies: favoriteMovies,
+        loadNextPage: ref.read(favoriteMoviesProvider.notifier).loadNextPage,
       ),
     );
   }

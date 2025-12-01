@@ -36,10 +36,9 @@ class StorageMoviesNotifier extends StateNotifier<Map<int, Movie>> {
     );
     page++;
 
-    print('provider favortie movies init');
-    print(movies);
-    print(movies[0].title);
-    print('provider favortie movies end');
+    if (movies.isEmpty) {
+      return [];
+    }
 
     final tempMovies = <int, Movie>{};
     for (final movie in movies) {

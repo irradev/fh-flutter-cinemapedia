@@ -29,11 +29,11 @@ class _CustomBottomNavigationBar extends StatelessWidget {
       currentIndex: navigationShell.currentIndex,
       elevation: 0,
       onTap: (index) {
-        if (index == 0) {
-          navigationShell.goBranch(index, initialLocation: true);
-        } else {
-          navigationShell.goBranch(index);
-        }
+        const initLocationIndexes = [0, 2];
+        navigationShell.goBranch(
+          index,
+          initialLocation: initLocationIndexes.contains(index),
+        );
       },
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home_max), label: 'Inicio'),
