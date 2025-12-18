@@ -1,5 +1,8 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-
 class Environment {
-  static String tmdbApiToken = dotenv.env['TMDB_API_TOKEN'] ?? 'No API Token';
+  // Use --dart-define values passed at compile time
+  // Build command: flutter build web --dart-define=TMDB_API_TOKEN=your_token
+  static const String tmdbApiToken = String.fromEnvironment(
+    'TMDB_API_TOKEN',
+    defaultValue: 'No API Token',
+  );
 }

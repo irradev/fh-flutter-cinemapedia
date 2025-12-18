@@ -1,3 +1,3 @@
 [build]
-  command = "flutter build web --dart-define=TMDB_API_TOKEN=$TMDB_API_TOKEN"
+  command = "bash netlify/install_flutter_and_build.sh"
   publish = "build/web"
