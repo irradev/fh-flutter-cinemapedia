@@ -1,5 +1,8 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import '../app_config.dart';
 
 class Environment {
-  static String tmdbApiToken = dotenv.env['TMDB_API_TOKEN'] ?? 'No API Token';
+  // static String tmdbApiToken = dotenv.env['TMDB_API_TOKEN'] ?? 'No API Token';
+  static String get tmdbApiToken {
+    return AppConfig.tmdbApiKey;
+  }
 }
