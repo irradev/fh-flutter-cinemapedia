@@ -6,13 +6,7 @@ on:
       - main
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write
 
 jobs:
   build:
@@ -22,39 +16,24 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Set up Flutter
+      - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'stable'
+          flutter-version: '3.38.5'
+          channel: stable
           cache: true
 
-      - name: Enable web
-        run: flutter config --enable-web
+      - name: Flutter doctor
+        run: flutter doctor -v
 
       - name: Install dependencies
         run: flutter pub get
 
       - name: Build web
-        run: |
-          flutter build web \
-            --release \
-            --base-href "/fh-flutter-cinemapedia/" \
-            --dart-define=APP_ENV=${{ secrets.APP_ENV }} \
-            --dart-define=TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}
+        run: flutter build web --release --base-href "/fh-flutter-cinemapedia/"
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: build/web
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/web
