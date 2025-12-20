@@ -35,15 +35,15 @@ final mainTabsRouter = StatefulShellRoute.indexedStack(
       ],
     ),
 
-    // * MainTab: Categories
-    StatefulShellBranch(
-      routes: [
-        GoRoute(
-          path: '/categories',
-          builder: (context, state) => const CategoriesView(),
-        ),
-      ],
-    ),
+    // // * MainTab: Categories
+    // StatefulShellBranch(
+    //   routes: [
+    //     GoRoute(
+    //       path: '/categories',
+    //       builder: (context, state) => const CategoriesView(),
+    //     ),
+    //   ],
+    // ),
 
     // * MainTab: Favorites
     StatefulShellBranch(

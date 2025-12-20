@@ -29,7 +29,8 @@ class _CustomBottomNavigationBar extends StatelessWidget {
       currentIndex: navigationShell.currentIndex,
       elevation: 0,
       onTap: (index) {
-        const initLocationIndexes = [0, 2];
+        // const initLocationIndexes = [0, 2];
+        const initLocationIndexes = [0, 1];
         navigationShell.goBranch(
           index,
           initialLocation: initLocationIndexes.contains(index),
