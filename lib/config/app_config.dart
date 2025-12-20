@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+import 'constants/environment.dart';
 
 enum AppEnv { demo, prod }
 
@@ -23,16 +24,8 @@ class AppConfig {
   /// Inicializa variables según plataforma + entorno
   static Future<void> init() async {
     if (!kIsWeb && env == AppEnv.prod) {
-      await dotenv.load(fileName: '.env');
+      await Environment.init();
     }
-  }
-
-  /// Acceso unificado a variables
-  static String get tmdbApiKey {
-    if (kIsWeb) {
-      return const String.fromEnvironment('TMDB_API_KEY');
-    }
-    return dotenv.env['TMDB_API_KEY'] ?? 'No API Token';
   }
 
   static bool get isDemo => env == AppEnv.demo;
